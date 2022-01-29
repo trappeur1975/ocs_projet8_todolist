@@ -5,6 +5,7 @@
 
 {% block body %}
     <div class="row">
+        {% form_theme form 'bootstrap_4_layout.html.twig' %}
         {{ form_start(form, {'action' : path('user_edit', {'id' : user.id})}) }}
         {{ form_widget(form) }}
 
