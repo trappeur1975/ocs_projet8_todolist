@@ -49,7 +49,7 @@ class UserController extends AbstractController
             $user->setPassword($passwordHasher->hashPassword($user, $Password));
             //  ----SUITE RAJOUT NICOLAS-------------
             $roleUser = $form->get('role')->getData();
-            $user->setRoles([$roleUser]);
+            $user->setRoles($roleUser);
             // dd($user);
             //  ----FIN RAJOUT NICOLAS-------------
             $em->persist($user);
@@ -84,7 +84,7 @@ class UserController extends AbstractController
             $user->setPassword($passwordHasher->hashPassword($user, $Password));
             //  ----SUITE RAJOUT NICOLAS-------------
             $roleUser = $form->get('role')->getData();
-            $user->setRoles([$roleUser]);
+            $user->setRoles($roleUser);
 
             $this->getDoctrine()->getManager()->flush();
 

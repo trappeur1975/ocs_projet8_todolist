@@ -10,4 +10,6 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 29/01/2022 : corrections of anomalies => management of roles for users
 
-29/01/2022 : corrections of anomalies => task management (attach an author to a task and display it in the task list in front) (task management without author displayed anonymously) 
+29/01/2022 : corrections of anomalies => task management (attach an author to a task and display it in the task list in front) (task management without author displayed anonymously)
+
+29/01/2022 : bug fix in my code for saving roles in the "UserController.php" file 
