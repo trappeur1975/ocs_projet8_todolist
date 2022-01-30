@@ -9,9 +9,8 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 27/01/2022 : migration from symfony 3.4 to symfony 5.4.2 and correction of depreciation
 
 29/01/2022 : corrections of anomalies => management of roles for users
-
 29/01/2022 : corrections of anomalies => task management (attach an author to a task and display it in the task list in front) (task management without author displayed anonymously)
-
 29/01/2022 : bug fix in my code for saving roles in the "UserController.php" file
 
-30/01/2022 : resolution of the personal display bug to display the task icon closed or not completed 
+30/01/2022 : resolution of the personal display bug to display the task icon closed or not completed
+30/01/2022 : update of TaskType.php and edit.html.twig file 
