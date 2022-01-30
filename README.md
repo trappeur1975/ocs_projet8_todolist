@@ -13,4 +13,5 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 29/01/2022 : bug fix in my code for saving roles in the "UserController.php" file
 
 30/01/2022 : resolution of the personal display bug to display the task icon closed or not completed
-30/01/2022 : update of TaskType.php and edit.html.twig file 
+30/01/2022 : update of TaskType.php and edit.html.twig file
+30/01/2022 : personal code modification => mapping of the "roles" field in "userType.php" 

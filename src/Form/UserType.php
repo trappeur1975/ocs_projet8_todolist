@@ -27,16 +27,15 @@ class UserType extends AbstractType
                 'second_options' => ['label' => 'Tapez le mot de passe à nouveau'],
             ])
             ->add('email', EmailType::class, ['label' => 'Adresse email'])
-            ->add('role', ChoiceType::class, [
+            ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
                     'Administrateur' =>  'ROLE_ADMIN'
-                ], 'mapped' => false,
-                'data' => ['ROLE_USER'],
+                ], 'data' => ['ROLE_USER'],
                 'expanded' => true, 'required' => true, 'multiple' => false
             ]);
 
-        $builder->get('role')->addModelTransformer(new CallbackTransformer(
+        $builder->get('roles')->addModelTransformer(new CallbackTransformer(
             function ($rolesAsArray) {
                 // transform the array to a string
                 return count($rolesAsArray) ? $rolesAsArray[0] : null;
