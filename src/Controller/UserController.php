@@ -6,9 +6,11 @@ use App\Entity\User;
 use App\Form\UserType;
 // use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use App\Repository\UserRepository;
+use Exception;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 // use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -17,6 +19,7 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/users", name="user_list")
+     * @IsGranted("ROLE_ADMIN", message="N'étant pas administrateur de ce site vous n'avez pas accès à la ressource que vous avez demandez")
      */
     // public function listAction()
     public function listAction(UserRepository $userRepository)
@@ -24,6 +27,7 @@ class UserController extends AbstractController
         // return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository('AppBundle:User')->findAll()]);
         // return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository('User::class')->findAll()]);
         // return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository(User::class)->findAll()]);
+
         return $this->render('user/list.html.twig', ['users' => $userRepository->findAll()]);
     }
 
