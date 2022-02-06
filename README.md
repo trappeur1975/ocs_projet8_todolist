@@ -20,4 +20,6 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 30/01/2022 : personal code modification => mapping of the "roles" field in "userType.php"
 
-30/01/2022 : modification of personal code => "userType.php" file so that when editing a user, the role select is positioned on the role to which it belongs 
+30/01/2022 : modification of personal code => "userType.php" file so that when editing a user, the role select is positioned on the role to which it belongs
+
+06/02/2022 : addition of {{ path('homepage') }} in "base.html.twig" 
