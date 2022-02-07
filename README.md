@@ -24,4 +24,6 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 06/02/2022 : addition of {{ path('homepage') }} in "base.html.twig"
 
-06/02/2022 : added @IsGranted("ROLE_ADMIN") rule for the listAction function 
+06/02/2022 : added @IsGranted("ROLE_ADMIN") rule for the listAction function
+
+07/02/2022 : addition of @IsGranted("DELETE_TASK") rule in controller taskcontroller function "deleteTaskAction" and creation of "TaskVoter" in security > voter
