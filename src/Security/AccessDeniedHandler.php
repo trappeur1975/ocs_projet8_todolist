@@ -12,7 +12,7 @@ class AccessDeniedHandler extends AbstractController implements AccessDeniedHand
 {
     public function handle(Request $request, AccessDeniedException $accessDeniedException): ?Response
     {
-        $this->addFlash('accesDenied', 'VOUS AVEZ ETE REDIRIGER SUR CETTE PAGE CAR : ' . $accessDeniedException->getMessage());
+        $this->addFlash('accesDenied', 'VOUS AVEZ ETE REDIRIGE SUR CETTE PAGE CAR : ' . $accessDeniedException->getMessage());
         return $this->redirectToRoute('homepage');
     }
 }

@@ -25,8 +25,8 @@ class TaskVoter extends Voter
         }
 
         if ($attribute == 'DELETE_TASK') {
-            // user must be the author of the task
-            return $user === $subject->getAuthor();
+            // user must be the author of the task or admin and the author is anonymous (=>null)
+            return $user === $subject->getAuthor() || (in_array('ROLE_ADMIN', $user->getRoles()) && null === $subject->getAuthor());
         }
 
         return false;

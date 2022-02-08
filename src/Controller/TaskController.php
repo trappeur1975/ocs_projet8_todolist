@@ -92,7 +92,7 @@ class TaskController extends AbstractController
 
     /**
      * @Route("/tasks/{id}/delete", name="task_delete")
-     * @IsGranted("DELETE_TASK", subject="task", message="cette tache ne vous appartient pas vous n'avez pas le droit de la supprimer")
+     * @IsGranted("DELETE_TASK", subject="task", message="cette tache ne vous appartient pas ou vous n'etes pas admin ce site, vous n'avez donc pas le droit de la supprimer")
      */
     public function deleteTaskAction(Task $task)
     {
