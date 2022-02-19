@@ -28,4 +28,6 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 07/02/2022 : addition of @IsGranted("DELETE_TASK") rule in controller taskcontroller function "deleteTaskAction" and creation of "TaskVoter" in security > voter
 
-08/02/2022 : modify "taskVoter.php" function "voteOnAttribute" for an admin to delete tasks of which anonymous is the author 
+08/02/2022 : modify "taskVoter.php" function "voteOnAttribute" for an admin to delete tasks of which anonymous is the author
+
+19/02/2022 :TASKTEST unit test
