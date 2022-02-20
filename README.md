@@ -32,4 +32,6 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 19/02/2022 : TASKTEST unit test
 
-19/02/2022 : unit test for entities (task, user) and composer upgrade 
+20/02/2022 : unit test for entities (task, user) and composer upgrade
+
+20/02/2022 : creation of the CoverageTest folder to test the code coverage rate 
