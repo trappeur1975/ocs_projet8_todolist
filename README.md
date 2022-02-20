@@ -30,4 +30,6 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 08/02/2022 : modify "taskVoter.php" function "voteOnAttribute" for an admin to delete tasks of which anonymous is the author
 
-19/02/2022 :TASKTEST unit test
+19/02/2022 : TASKTEST unit test
+
+19/02/2022 : unit test for entities (task, user) and composer upgrade 
