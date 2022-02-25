@@ -10,29 +10,25 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class TaskTest extends KernelTestCase
 {
+
     const TASK_TITLE = "task title";
     const TASK_CONTENT = "task content";
 
-    // public $mytask = new Task();
+    private $myTask;
 
-    public function getTaskEntity(): Task
+    public function setUp(): void
     {
         self::bootKernel();
-        // return new Task();
-        $theTask = new Task();
-        $theTask->setTitle('the title');
-        $theTask->setContent('the content task');
-
-        return $theTask;
+        $this->myTask = new Task();
+        $this->myTask->setTitle('the title');
+        $this->myTask->setContent('the content task');
     }
 
     public function testValidTaskEntity(): void
     {
-        $myTask = $this->getTaskEntity();
-
         // to recover the "validator" service
         $container = static::getContainer();
-        $error = $container->get(ValidatorInterface::class)->validate($myTask);
+        $error = $container->get(ValidatorInterface::class)->validate($this->myTask);
 
         $this->assertCount(0, $error);
     }
@@ -40,54 +36,36 @@ class TaskTest extends KernelTestCase
     public function testInvalidTitleBlank(): void  //ok
     // public function testInvalidTitleBlank(ValidatorInterface $validator): void
     {
-        $myTask = $this->getTaskEntity();
-        $myTask->setTitle('');
+        $this->myTask->setTitle('');
 
         // to recover the "validator" service
         $container = static::getContainer();
         // $error = $container->get('validator')->validate($myTask); //deprecier
-        $error = $container->get(ValidatorInterface::class)->validate($myTask); //ok
-
-        $this->assertCount(1, $error);
-    }
-
-    public function testInvalidContentBlank(): void
-    {
-        $myTask = $this->getTaskEntity();
-        $myTask->setContent('');
-
-        // to recover the "validator" service
-        $container = static::getContainer();
-        // $error = $container->get('validator')->validate($myTask); //deprecier
-        $error = $container->get(ValidatorInterface::class)->validate($myTask); //ok
+        $error = $container->get(ValidatorInterface::class)->validate($this->myTask); //ok
 
         $this->assertCount(1, $error);
     }
 
     public function testValidCreatedAt(): void
     {
-        $myTask = $this->getTaskEntity();
-        $this->assertInstanceOf(DateTime::class, $myTask->getCreatedAt());
+        $this->assertInstanceOf(DateTime::class, $this->myTask->getCreatedAt());
     }
 
     public function testValidDoneDefault(): void
     {
-        $myTask = $this->getTaskEntity();
-        $this->assertNotTrue($myTask->getIsDone());
+        $this->assertNotTrue($this->myTask->getIsDone());
     }
 
     public function testValidToggle(): void
     {
-        $myTask = $this->getTaskEntity();
-        $myTask->toggle(true);
-        $this->assertTrue($myTask->getIsDone());
+        $this->myTask->toggle(true);
+        $this->assertTrue($this->myTask->getIsDone());
     }
 
     public function testValidAuthor(): void
     {
-        $myTask = $this->getTaskEntity();
         $user = new User();
-        $myTask->setAuthor($user);
-        $this->assertEquals($user, $myTask->getAuthor());
+        $this->myTask->setAuthor($user);
+        $this->assertEquals($user, $this->myTask->getAuthor());
     }
 }
