@@ -27,12 +27,12 @@ class UserController extends AbstractController
         // return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository('AppBundle:User')->findAll()]);
         // return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository('User::class')->findAll()]);
         // return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository(User::class)->findAll()]);
-
         return $this->render('user/list.html.twig', ['users' => $userRepository->findAll()]);
     }
 
     /**
      * @Route("/users/create", name="user_create")
+     * @IsGranted("ROLE_ADMIN", message="N'étant pas administrateur de ce site vous n'avez pas accès à la ressource que vous avez demandez")
      */
     // public function createAction(Request $request)
     // public function createAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
@@ -54,7 +54,6 @@ class UserController extends AbstractController
             //  ----SUITE RAJOUT NICOLAS-------------
             $roleUser = $form->get('roles')->getData();
             $user->setRoles($roleUser);
-            // dd($user);
             //  ----FIN RAJOUT NICOLAS-------------
             $em->persist($user);
             $em->flush();
@@ -69,6 +68,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/users/{id}/edit", name="user_edit")
+     * @IsGranted("ROLE_ADMIN", message="N'étant pas administrateur de ce site vous n'avez pas accès à la ressource que vous avez demandez")
      */
     // public function editAction(User $user, Request $request)
     // public function editAction(User $user, Request $request, UserPasswordEncoderInterface $passwordEncoder)

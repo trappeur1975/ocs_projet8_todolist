@@ -38,4 +38,6 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 25/02/2022 : refactoring of unit test code (taskTest and UserTest) and functional test defaultControllerTest.php
 
-26/02/2022 : functional test SecurityControllerTest.php 
+26/02/2022 : functional test SecurityControllerTest.php
+
+03/03/2022 : functional test UserControllerTest.php 
