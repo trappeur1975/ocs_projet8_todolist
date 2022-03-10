@@ -99,9 +99,9 @@ class UserControllerTest extends WebTestCase
         $form['user[password][first]'] = 'testcreateUserpassword';
         $form['user[password][second]'] = 'testcreateUserpassword';
         $form['user[email]'] = 'testcreateUser@hotmail.com';
-        $form['user[roles]'] = 'ROLE_ADMIN';
-        // $form['user[roles]']->select('ROLE_ADMIN');  //POURQUOI CA MARCHE ALORS QUE C'EST UNE CHECKBOX
-        // $form['user[roles]']->tick('ROLE_ADMIN');    //POURQUOI CA MARCHE PAS ALORS QUE C'EST UNE CHECKBOX
+        // $form['user[roles]'] = 'ROLE_ADMIN'; //taditionnelle
+        $form['user[roles]']->select('ROLE_ADMIN');  //pour les select ou les choices(dans mon cas)
+        // $form['user[roles]']->tick();    //que pour les checkBox moi ces t un choice
 
         $crawler = $this->client->submit($form);
 

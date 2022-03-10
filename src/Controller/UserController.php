@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\UserType;
-// use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use App\Repository\UserRepository;
 use Exception;
+use App\Entity\User;
+// use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use App\Form\UserType;
+use App\Repository\UserRepository;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -36,7 +37,7 @@ class UserController extends AbstractController
      */
     // public function createAction(Request $request)
     // public function createAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
-    public function createAction(Request $request, UserPasswordHasherInterface $passwordHasher)
+    public function createAction(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -44,7 +45,8 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            // $em = $this->getDoctrine()->getManager();
+
             // $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPassword());
             // $user->setPassword($password);
             //  ----RAJOUT NICOLAS code origine-------------
@@ -72,7 +74,7 @@ class UserController extends AbstractController
      */
     // public function editAction(User $user, Request $request)
     // public function editAction(User $user, Request $request, UserPasswordEncoderInterface $passwordEncoder)
-    public function editAction(User $user, Request $request, UserPasswordHasherInterface $passwordHasher)
+    public function editAction(User $user, Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher)
 
     {
         $form = $this->createForm(UserType::class, $user);
@@ -90,7 +92,8 @@ class UserController extends AbstractController
             $roleUser = $form->get('roles')->getData();
             $user->setRoles($roleUser);
 
-            $this->getDoctrine()->getManager()->flush();
+            // $this->getDoctrine()->getManager()->flush();
+            $em->flush();
 
             $this->addFlash('success', "L'utilisateur a bien été modifié");
 

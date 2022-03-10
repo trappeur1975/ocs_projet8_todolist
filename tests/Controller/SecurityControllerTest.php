@@ -45,7 +45,9 @@ class SecurityControllerTest extends WebTestCase
 
         $this->assertSelectorExists('h1', "Bienvenue sur Todo List, l'application vous permettant de gérer l'ensemble de vos tâches sans effort !");
 
-        // echo $client->getResponse()->getContent();
+        // echo $this->client->getResponse()->getContent();
+        // var_dump($this->client->getResponse()->getContent());
+
     }
 
     public function testAuthentificationWithInvalidCredential()

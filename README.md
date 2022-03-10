@@ -42,4 +42,6 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 03/03/2022 : functional test UserControllerTest.php
 
-04/03/2022 : functional test TaskControllerTest.php 
+04/03/2022 : functional test TaskControllerTest.php
+
+10/03/2022 : correction of the depreciations appeared during the tests
