@@ -12,22 +12,38 @@ class TaskControllerTest extends WebTestCase
     /**
      * constant represent a email with role is USER
      */
-    const EMAIL_USER1 = 'titi@hotmail.com';
+    const EMAIL_USER1 = 'user1@hotmail.com';
 
     /**
      * constant represent a email with role is USER
      */
-    const EMAIL_USER2 = 'tata@test.com';
+    const EMAIL_USER2 = 'user2@hotmail.com';
 
     /**
      * constant represent a email with role is ADMIN
      */
-    const EMAIL_ADMIN = 'yeye@hotmail.com';
+    const EMAIL_ADMIN = 'admin@hotmail.com';
 
     /**
-     * constant represent a task that we are going to create 
+     * constant that represents the title of the task 
      */
     const TASK_TITLE = 'test create Tasks';
+
+    /**
+     * constant that represents the content of the task 
+     */
+    const TASK_CONTENT = 'ceci est un contenu de tache';
+
+
+    /**
+     * constant represent a task of user1
+     */
+    const TASK_ID_AUTHOR1 = 4;
+
+    /**
+     * constant represent a task of user1
+     */
+    const TASK_ID_AUTHORNULL = 1;
 
     public function setUp(): void
     {
@@ -52,9 +68,6 @@ class TaskControllerTest extends WebTestCase
 
         $this->client->request('GET', '/tasks');
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-
-        // $this->client->followRedirect();
-        // $this->assertSelectorExists('.alert.alert-danger', "VOUS AVEZ ETE REDIRIGE SUR CETTE PAGE CAR : N'étant pas administrateur de ce site vous n'avez pas accès à la ressource que vous avez demandez");
     }
 
     public function testCreateTasksNoLogged(): void
@@ -83,7 +96,7 @@ class TaskControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Ajouter')->form();
         $form['task[title]'] = SELF::TASK_TITLE;
-        $form['task[content]'] = 'ceci est un test de creation de tache';
+        $form['task[content]'] = SELF::TASK_CONTENT;
 
         $crawler = $this->client->submit($form);
 
@@ -94,19 +107,7 @@ class TaskControllerTest extends WebTestCase
 
     public function testDeleteTasksNoLogged(): void
     {
-        $userRepository = static::getContainer()->get(UserRepository::class);
-        $taskRepository = static::getContainer()->get(TaskRepository::class);
-
-        $AuthorTask = $userRepository->findOneByEmail(SELF::EMAIL_USER1);
-
-        $task = $taskRepository->findOneBy([
-            'title' => SELF::TASK_TITLE,
-            'author' => $AuthorTask
-        ]);
-
-        $idTaskDelete = $task->getId();
-
-        $this->client->request('GET', "/tasks/$idTaskDelete/delete");
+        $this->client->request('GET', '/tasks/' . SELF::TASK_ID_AUTHOR1 . '/delete');
 
         $this->assertResponseRedirects('/login', Response::HTTP_FOUND);
     }
@@ -116,21 +117,13 @@ class TaskControllerTest extends WebTestCase
         $userRepository = static::getContainer()->get(UserRepository::class);
         $taskRepository = static::getContainer()->get(TaskRepository::class);
 
-        $AuthorTask = $userRepository->findOneByEmail(SELF::EMAIL_USER1);
         $testUser = $userRepository->findOneByEmail(SELF::EMAIL_USER2);
-
-        $task = $taskRepository->findOneBy([
-            'title' => SELF::TASK_TITLE,
-            'author' => $AuthorTask
-        ]);
-
-        $idTaskDelete = $task->getId();
 
         $this->client->loginUser($testUser);
 
         // $this->client->followRedirects();
 
-        $crawler = $this->client->request('GET', "/tasks/$idTaskDelete/delete");
+        $crawler = $this->client->request('GET', '/tasks/' . SELF::TASK_ID_AUTHOR1 . '/delete');
 
         // ----------------CA MARCHE--------------
         $this->assertResponseRedirects('/');
@@ -140,7 +133,7 @@ class TaskControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertSelectorExists('.alert.alert-danger', "VOUS AVEZ ETE REDIRIGE SUR CETTE PAGE CAR : cette tache ne vous appartient pas ou vous n'etes pas admin ce site, vous n'avez donc pas le droit de la supprimer");
 
-        $this->assertNotNull($taskRepository->findOneBy(['title' => SELF::TASK_TITLE]));
+        $this->assertNotNull($taskRepository->find(SELF::TASK_ID_AUTHOR1));
     }
 
     public function testEditasksNoLogged(): void
@@ -150,10 +143,7 @@ class TaskControllerTest extends WebTestCase
 
         $AuthorTask = $userRepository->findOneByEmail(SELF::EMAIL_USER1);
 
-        $task = $taskRepository->findOneBy([
-            'title' => SELF::TASK_TITLE,
-            'author' => $AuthorTask
-        ]);
+        $task = $taskRepository->findOneBy(['author' => $AuthorTask]);
 
         $idTaskEdit = $task->getId();
 
@@ -169,10 +159,7 @@ class TaskControllerTest extends WebTestCase
 
         $testUser = $userRepository->findOneByEmail(SELF::EMAIL_USER1);
 
-        $task = $taskRepository->findOneBy([
-            'title' => SELF::TASK_TITLE,
-            'author' => $testUser
-        ]);
+        $task = $taskRepository->findOneBy(['author' => $testUser]);
 
         $idTaskEdit = $task->getId();
 
@@ -184,7 +171,7 @@ class TaskControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         $form = $crawler->selectButton('Modifier')->form([
-            'task[content]' => 'content modifié'
+            'task[content]' => SELF::TASK_CONTENT
         ]);
         $this->client->submit($form);
 
@@ -194,7 +181,7 @@ class TaskControllerTest extends WebTestCase
         $this->assertSelectorExists('.alert.alert-success', "Superbe ! La tâche a bien été modifiée.");
         $this->assertNotNull($taskRepository->findOneBy(['id' => $idTaskEdit]));
         $taskUpdated = $taskRepository->findOneBy(['id' => $idTaskEdit]);
-        $this->assertSame($taskUpdated->getContent(), 'content modifié');
+        $this->assertSame($taskUpdated->getContent(), SELF::TASK_CONTENT);
     }
 
     public function testToggleTasksNoLogged(): void
@@ -204,10 +191,7 @@ class TaskControllerTest extends WebTestCase
 
         $AuthorTask = $userRepository->findOneByEmail(SELF::EMAIL_USER1);
 
-        $task = $taskRepository->findOneBy([
-            'title' => SELF::TASK_TITLE,
-            'author' => $AuthorTask
-        ]);
+        $task = $taskRepository->findOneBy(['author' => $AuthorTask]);
 
         $idTaskToggle = $task->getId();
 
@@ -223,10 +207,7 @@ class TaskControllerTest extends WebTestCase
 
         $testUser = $userRepository->findOneByEmail(SELF::EMAIL_USER1);
 
-        $task = $taskRepository->findOneBy([
-            'title' => SELF::TASK_TITLE,
-            'author' => $testUser
-        ]);
+        $task = $taskRepository->findOneBy(['author' => $testUser]);
 
         $idTaskToggle = $task->getId();
 
@@ -240,9 +221,6 @@ class TaskControllerTest extends WebTestCase
         $this->assertSelectorExists('.alert.alert-success', "Superbe ! La tâche ma tache a bien été marquée comme faite.");
     }
 
-
-    // ----------------------------
-
     public function testDeleteTaskWichAuthor()
     {
         $userRepository = static::getContainer()->get(UserRepository::class);
@@ -250,57 +228,51 @@ class TaskControllerTest extends WebTestCase
 
         $testUser = $userRepository->findOneByEmail(SELF::EMAIL_USER1);
 
-        $task = $taskRepository->findOneBy([
-            'title' => SELF::TASK_TITLE,
-            'author' => $testUser
-        ]);
-
-        $idTaskDelete = $task->getId();
-
         $this->client->loginUser($testUser);
 
         $this->client->followRedirects();
 
-        $crawler = $this->client->request('GET', "/tasks/$idTaskDelete/delete");
+        $crawler = $this->client->request('GET', '/tasks/' . SELF::TASK_ID_AUTHOR1 . '/delete');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('.alert.alert-success', "Superbe ! La tâche a bien été supprimée.");
-        $this->assertNull($taskRepository->findOneBy(['id' => $idTaskDelete]));
+        $this->assertNull($taskRepository->find(SELF::TASK_ID_AUTHOR1));
     }
 
-    // REVOIR CETTE FUNCTION CAR N ARRIVE PAS A PASSER LA TASK CREER AVEC UN AUTHOR NULL DONC DOIT INTERVENIR MANUELLEMENT DANS LA BASE DE DONNE
-    // public function testDeleteTaskAuthorNullByADMIN()
-    // {
-    //     $userRepository = static::getContainer()->get(UserRepository::class);
-    //     $taskRepository = static::getContainer()->get(TaskRepository::class);
+    public function testDeleteTaskAuthorNullByUSER()
+    {
+        $userRepository = static::getContainer()->get(UserRepository::class);
+        $taskRepository = static::getContainer()->get(TaskRepository::class);
 
-    //     $testUser = $userRepository->findOneByEmail(SELF::EMAIL_ADMIN);
-    //     // $this->client->loginUser($testUser);
-    //     // $this->client->followRedirects();
-    //     // $crawler = $this->client->request('GET', '/tasks/create');
-    //     // $form = $crawler->selectButton('Ajouter')->form();
-    //     // $form['task[title]'] = 'test tache null';
-    //     // $form['task[content]'] = 'ceci est un test de creation de tache null';
+        $testUser = $userRepository->findOneByEmail(SELF::EMAIL_USER1);
 
-    //     // $crawler = $this->client->submit($form);
-    //     // $task = $taskRepository->findOneBy(['title' => 'test tache null']);
-    //     // $task->setAuthor(null); //MARCHE PAS POURQUOI??
+        $this->client->loginUser($testUser);
 
-    //     $task = $taskRepository->findOneBy(['title' => 'test tache null']);
+        $crawler = $this->client->request('GET', '/tasks/' . SELF::TASK_ID_AUTHORNULL . '/delete');
 
-    //     $idTaskDelete = $task->getId();
+        $this->assertResponseRedirects('/');
+        $this->client->followRedirect();
 
-    //     $this->client->loginUser($testUser);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertSelectorExists('.alert.alert-danger', "VOUS AVEZ ETE REDIRIGE SUR CETTE PAGE CAR : cette tache ne vous appartient pas ou vous n'etes pas admin ce site, vous n'avez donc pas le droit de la supprimer");
+        $this->assertNotNull($taskRepository->find(SELF::TASK_ID_AUTHORNULL));
+    }
 
-    //     $this->client->followRedirects();
+    public function testDeleteTaskAuthorNullByADMIN()
+    {
+        $userRepository = static::getContainer()->get(UserRepository::class);
+        $taskRepository = static::getContainer()->get(TaskRepository::class);
 
-    //     $crawler = $this->client->request('GET', "/tasks/$idTaskDelete/delete");
+        $testAdmin = $userRepository->findOneByEmail(SELF::EMAIL_ADMIN);
 
-    //     $this->assertResponseIsSuccessful();
-    //     $this->assertSelectorExists('.alert.alert-success', "Superbe ! La tâche a bien été supprimée.");
-    //     $this->assertNull($taskRepository->findOneBy(['id' => $idTaskDelete]));
-    // }
+        $this->client->loginUser($testAdmin);
 
+        $this->client->followRedirects();
 
+        $crawler = $this->client->request('GET', '/tasks/' . SELF::TASK_ID_AUTHORNULL . '/delete');
 
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorExists('.alert.alert-success', "Superbe ! La tâche a bien été supprimée.");
+        $this->assertNull($taskRepository->find(SELF::TASK_ID_AUTHORNULL));
+    }
 }

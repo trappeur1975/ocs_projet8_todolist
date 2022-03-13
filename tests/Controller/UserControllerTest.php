@@ -11,17 +11,17 @@ class UserControllerTest extends WebTestCase
     /**
      * constant represent a email with role is USER
      */
-    const EMAIL_USER = 'titi@hotmail.com';
+    const EMAIL_USER = 'user1@hotmail.com';
 
     /**
      * constant represents the email of a user used for tests 
      */
-    const EMAIL = 'nico4@hotmail.com';
+    const EMAIL = 'user2@hotmail.com';
 
     /**
      * constant represent a email with role is ADMIN
      */
-    const EMAIL_ADMIN = 'yeye@hotmail.com';
+    const EMAIL_ADMIN = 'admin@hotmail.com';
 
     private $client = null;
 

@@ -33,8 +33,8 @@ class SecurityControllerTest extends WebTestCase
     {
         $crawler = $this->client->request('GET', '/login');
         $form = $crawler->selectButton('Se connecter')->form([
-            'username' => 'nico',
-            'password' => 'nico'
+            'username' => 'user1',
+            'password' => 'user1'
         ]);
         $this->client->submit($form);
 
@@ -54,7 +54,7 @@ class SecurityControllerTest extends WebTestCase
     {
         $crawler = $this->client->request('GET', '/login');
         $form = $crawler->selectButton('Se connecter')->form([
-            'username' => 'nico',
+            'username' => 'user1',
             'password' => 'falsePassword'
         ]);
         $this->client->submit($form);
@@ -73,7 +73,7 @@ class SecurityControllerTest extends WebTestCase
         $userRepository = static::getContainer()->get(UserRepository::class);
 
         // retrieve the test user
-        $testUser = $userRepository->findOneByEmail('titi@hotmail.com');
+        $testUser = $userRepository->findOneByEmail('user1@hotmail.com');
 
         // simulate $testUser being logged in
         $this->client->loginUser($testUser);
@@ -97,7 +97,7 @@ class SecurityControllerTest extends WebTestCase
         $userRepository = static::getContainer()->get(UserRepository::class);
 
         // retrieve the test user
-        $testUser = $userRepository->findOneByEmail('titi@hotmail.com');
+        $testUser = $userRepository->findOneByEmail('user1@hotmail.com');
 
         // simulate $testUser being logged in
         $this->client->loginUser($testUser);

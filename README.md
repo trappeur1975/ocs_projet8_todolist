@@ -4,6 +4,12 @@ Base du projet #8 : Améliorez un projet existant
 https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 --------------------------
+Dans le fichier "composer.json" un script (que j ai nommé « reset-data ») a été crée pour remettre a zero ma base de donnée, surtout utile pour l'utilisation d'un jeu de donnée via des fixtures. Pour l executer il suffit d'executer la commande suivante :
+            
+            composer reset-data
+
+--------------------------
+
 16/01/2022 : creation of the github repository and update of the original symfony project in 3.1 to symfony 3.4 (correction of deprecations) 
 
 27/01/2022 : migration from symfony 3.4 to symfony 5.4.2 and correction of depreciation
@@ -47,3 +53,5 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 10/03/2022 : correction of the depreciations appeared during the tests
 
 11/03/2022 : create fixtures (UserFixtures, Taskfixtures)
+
+13/03/2022 : modification of tests following fixtures
