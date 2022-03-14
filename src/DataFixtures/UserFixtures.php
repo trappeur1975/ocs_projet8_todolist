@@ -4,16 +4,17 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 use App\Entity\User;
 
 class UserFixtures extends Fixture
 {
     private $encoder;
 
-    public function __construct(UserPasswordEncoderInterface $encoder)
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
-        $this->encoder = $encoder;
+        $this->encoder = $passwordHasher;
     }
 
     public function load(ObjectManager $manager): void
@@ -22,7 +23,7 @@ class UserFixtures extends Fixture
             $user = new User();
             $user->setUsername('user' . $nbrUser)
                 ->setEmail('user' . $nbrUser  . '@hotmail.com')
-                ->setPassword($this->encoder->encodePassword($user, 'user' . $nbrUser))  //user1, user2, ...
+                ->setPassword($this->encoder->hashPassword($user, 'user' . $nbrUser))  //user1, user2, ...
                 ->setRoles(['ROLE_USER']);
 
             $manager->persist($user);
@@ -34,7 +35,7 @@ class UserFixtures extends Fixture
         $admin = new User();
         $admin->setUsername('admin')
             ->setEmail('admin@hotmail.com')
-            ->setPassword($this->encoder->encodePassword($admin, 'admin'))
+            ->setPassword($this->encoder->hashPassword($admin, 'admin'))
             ->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($admin);

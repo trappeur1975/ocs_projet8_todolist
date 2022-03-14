@@ -56,4 +56,6 @@ Dans le fichier "composer.json" un script (que j ai nommé « reset-data ») a �
 
 13/03/2022 : modification of tests following fixtures
 
-13/03/2022 : installation and configuration of doctrine-test-bundle to rollback transactions in my tests
+14/03/2022 : installation and configuration of doctrine-test-bundle to rollback transactions in my tests
+
+14/03/2022 : modifying userFixtures.php to use UserPasswordHasherInterface 
