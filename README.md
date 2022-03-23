@@ -61,3 +61,5 @@ Dans le fichier "composer.json" un script (que j ai nommé « reset-data ») a �
 14/03/2022 : modifying userFixtures.php to use UserPasswordHasherInterface 
 
 22/03/2022 : delete branche dev_documentation
+
+23/03/2022 : create branche dev_document
