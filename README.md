@@ -61,12 +61,13 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
     symfony server:start
 
 # Test
-    to run the tests I created, run the command: 
-        vendor/bin/phpunit
+to run the tests I created, run the command: 
+    vendor/bin/phpunit
 
 # Documentation
 [documentation symfony](https://symfony.com/doc/5.4/setup.html)
-[documenation php](https://phpunit.readthedocs.io/en/latest/installation.html#requirements)
+
+[documentation php](https://phpunit.readthedocs.io/en/latest/installation.html#requirements)
 
 ---
 
@@ -124,4 +125,6 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 
 23/03/2022 : create branche dev_document
 
-24/03/2022 : markdown readme document 
+24/03/2022 : markdown readme document
+
+24/03/2022 : update readme.md 
