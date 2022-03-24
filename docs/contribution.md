@@ -5,9 +5,9 @@ To participate in the project, whether to improve existing features, add new one
 
 # Table of Contents
 1.  __[Installation](#Installation)__
-2.  __[New-Contribution ](#New-Contribution)__
-    1.  __[Develop your code changes or new features](##Develop-your-code-changes-or-new-features)__
-    2.  __[Contribuate ](##contribuate)__
+2.  __[New contribution ](#New-contribution)__
+    1.  __[Develop your code changes or new features](#Develop-your-code-changes-or-new-features)__
+    2.  __[Contribuate ](#contribuate)__
 
 # Installation
 1. Click on the "Fork" button at the top right of the page and "fork" the project. This creates a copy of the repository on your GitHub account.  
@@ -20,7 +20,7 @@ To participate in the project, whether to improve existing features, add new one
 
 For more details see [the GitHub documentation](https://docs.github.com/en/get-started/quickstart/fork-a-repo). 
 
-# Contribution
+# New contribution
 ## Develop your code changes or new features
 1. Whatever the modifications or novelty envisaged, create a specific branch bearing an explicit name on what it contains. 
 To create a branch, use the command: git checkout -b branchname.
