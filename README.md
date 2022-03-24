@@ -127,4 +127,6 @@ to run the tests I created, run the command:
 
 24/03/2022 : markdown readme document
 
-24/03/2022 : update readme.md 
+24/03/2022 : update readme.md
+
+24/03/2022 : create contribution.md 
