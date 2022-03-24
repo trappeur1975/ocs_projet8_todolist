@@ -4,10 +4,10 @@ Contribution
 To participate in the project, whether to improve existing features, add new ones or fix bugs, please proceed as indicated below :
 
 # Table of Contents
-1.  __[Installation](#Installationn)__
-2.  __[Contribution ](#Contribution)__
-    1.  __[develop your code changes or new features ](#develop your code changes or new features)__
-    2.  __[contribution ](#contribution)__
+1.  __[Installation](#Installation)__
+2.  __[Contribution ](#New-Contribution)__
+    1.  __[develop your code changes or new features](##Develop-your-code-changes-or-new-features)__
+    2.  __[contribution ](##Contribution)__
 
 # Installation
 1. Click on the "Fork" button at the top right of the page and "fork" the project. This creates a copy of the repository on your GitHub account.  
