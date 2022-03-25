@@ -10,18 +10,16 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 4.  __[Test ](#Test)__
 4.  __[Documentation ](#Documentation)__
 
-
-
 # Deliverables
 1. Instructions for installing the project (in this README.md file) 
 2. Issues on the GitHub repository 
-3. The application coverage test. To access it, here is the path "tests > coverageTests" and display the "index.html" page in your browser 
-4. In a "docs" folder at the root of the project: 
-    1. Document explaining how to contribute to the project (markdown “.md” file) 
+3. In a "docs" folder at the root of the project: 
+    1. Document explaining how to contribute to the project (file "contribution.md") 
     2. Technical documentation concerning the implementation of authentication (file in PDF format) 
         * understand which file(s) need to be modified and why 
         * how authentication works and where users are stored 
-    3. The code quality and performance audit report
+    3. The application coverage test. To access it, here is the path "docs > coverageTests" and display the "index.html" page in your browser 
+    4. The code quality and performance audit report
         * detail the quality process to be used as well as the rules to be respected.
 
 # Minimum server configuration
@@ -45,7 +43,7 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 2. Install the libraries with the command 
     composer install
 
-3. personnaliser ses variables d'environnement dans le fichier ".env" et ".env.test"
+3. customize its environment variables in the ".env" and ".env.test" file 
     To benefit from a data set and be able to use them in front via the application or in the backend to execute unit and functional tests then in the "env" and ".env.test" file use the same database 
 
     for example: DATABASE_URL="mysql://root:@127.0.0.1:3306/ocsp8todolist_test" 
@@ -135,4 +133,6 @@ to run the tests I created, run the command:
 
 24/03/2022 : update 2 contribution.md
 
-24/03/2022 : update 3 contribution.md 
+24/03/2022 : update 3 contribution.md
+
+25/03/2022 : update of project documentation
