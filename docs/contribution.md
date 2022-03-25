@@ -31,7 +31,9 @@ To create a branch, use the command: git checkout -b branchname.
     * Respect [Symfony coding standards](https://symfony.com/doc/5.4/contributing/code/standards.html) 
 
 3. Check that the application is still functional by running the existing PHPUnit tests and if necessary by implementing new ones corresponding to your modifications or creations of new functionalities. 
-    * Make sure you get at least 70% code coverage 
+    * Make sure you get at least 70% code coverage
+    * to create a coverage test run the following command:
+        vendor/bin/phpunit --coverage-html pathCase/coverageTestName
 
 4. Make relevant commits: git commit -am "commit message". 
 
