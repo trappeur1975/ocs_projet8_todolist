@@ -45,10 +45,8 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         # RAJOUT NICOLAS
-        # - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, roles: PUBLIC_ACCESS }
-        # - { path: ^/users, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/users, roles: PUBLIC_ACCESS }
+        # - { path: ^/users, roles: ROLE_ADMIN }
         - { path: ^/, roles: ROLE_USER } 
 
 when@test:
