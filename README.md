@@ -15,7 +15,7 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
 2. Issues on the GitHub repository 
 3. In a "docs" folder at the root of the project: 
     1. Document explaining how to contribute to the project (file "contribution.md") 
-    2. Technical documentation concerning the implementation of authentication (file in PDF format) 
+    2. Technical documentation concerning the implementation of authentication (file "document_technique_todoList.pdf") 
         * understand which file(s) need to be modified and why 
         * how authentication works and where users are stored 
     3. The application coverage test. To access it, here is the path "docs > coverageTests" and display the "index.html" page in your browser 
@@ -123,4 +123,5 @@ to run the tests I created, run the command:
 
 25/03/2022 : update of project documentation
 
-26/03/2022 : update documentation, security.yaml, securityController
+26/03/2022 : update documentation, security.yaml, securityController  
+26/03/2022 :integration "document_technique_todoList"
