@@ -124,4 +124,6 @@ to run the tests I created, run the command:
 25/03/2022 : update of project documentation
 
 26/03/2022 : update documentation, security.yaml, securityController  
-26/03/2022 :integration "document_technique_todoList"
+26/03/2022 : integration "document_technique_todoList"
+
+08/04/2022 : integration "blackfire"
