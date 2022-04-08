@@ -126,5 +126,6 @@ to run the tests I created, run the command:
 26/03/2022 : update documentation, security.yaml, securityController  
 26/03/2022 : integration "document_technique_todoList"
 
-08/04/2022 : integration "blackfire"
+08/04/2022 : integration "blackfire"  
 08/04/2022 : integration "codeSniffer en dev"  
+08/04/2022 : modification "codeSniffer en dev"  
