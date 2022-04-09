@@ -25,9 +25,6 @@ class UserController extends AbstractController
     // public function listAction()
     public function listAction(UserRepository $userRepository)
     {
-        // return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository('AppBundle:User')->findAll()]);
-        // return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository('User::class')->findAll()]);
-        // return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository(User::class)->findAll()]);
         return $this->render('user/list.html.twig', ['users' => $userRepository->findAll()]);
     }
 
@@ -75,7 +72,6 @@ class UserController extends AbstractController
     // public function editAction(User $user, Request $request)
     // public function editAction(User $user, Request $request, UserPasswordEncoderInterface $passwordEncoder)
     public function editAction(User $user, Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher)
-
     {
         $form = $this->createForm(UserType::class, $user);
 

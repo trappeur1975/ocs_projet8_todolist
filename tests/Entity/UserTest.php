@@ -9,7 +9,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class UserTest extends KernelTestCase
 {
-
     private $myUser;
 
     public function setUp(): void
@@ -73,20 +72,18 @@ class UserTest extends KernelTestCase
 
     public function testValidTask(): void
     {
-        $task1 = new Task;
+        $task1 = new Task();
         $this->myUser->addTask($task1);
         $this->assertSame($task1->getAuthor(), $this->myUser);
         $this->assertCount(1, $this->myUser->getTasks());
-        // dd($myUser->getTasks());
-        // $this->assertInstanceOf(Collection::class, $myUser->getTasks()); //pourquoi ne fonctionne pas allaors que dd($myUser->getTasks() confime que c est une Collection
     }
 
     public function testValidRemoveTasks()
     {
         $task1 = new Task;
         $this->myUser->addTask($task1);
-        $this->assertCount(1,  $this->myUser->getTasks());
+        $this->assertCount(1, $this->myUser->getTasks());
         $this->myUser->removeTask($task1);
-        $this->assertCount(0,  $this->myUser->getTasks());
+        $this->assertCount(0, $this->myUser->getTasks());
     }
 }

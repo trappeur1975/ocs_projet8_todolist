@@ -11,17 +11,17 @@ class UserControllerTest extends WebTestCase
     /**
      * constant represent a email with role is USER
      */
-    const EMAIL_USER = 'user1@hotmail.com';
+    protected const EMAIL_USER = 'user1@hotmail.com';
 
     /**
-     * constant represents the email of a user used for tests 
+     * constant represents the email of a user used for tests
      */
-    const EMAIL = 'user2@hotmail.com';
+    protected const EMAIL = 'user2@hotmail.com';
 
     /**
      * constant represent a email with role is ADMIN
      */
-    const EMAIL_ADMIN = 'admin@hotmail.com';
+    protected const EMAIL_ADMIN = 'admin@hotmail.com';
 
     private $client = null;
 
@@ -40,7 +40,7 @@ class UserControllerTest extends WebTestCase
     {
         $userRepository = static::getContainer()->get(UserRepository::class);
 
-        $testUser = $userRepository->findOneByEmail(SELF::EMAIL_USER);
+        $testUser = $userRepository->findOneByEmail(self::EMAIL_USER);
         $this->client->loginUser($testUser);
 
         $this->client->request('GET', '/users');
@@ -56,7 +56,7 @@ class UserControllerTest extends WebTestCase
     {
         $userRepository = static::getContainer()->get(UserRepository::class);
 
-        $testUser = $userRepository->findOneByEmail(SELF::EMAIL_ADMIN);
+        $testUser = $userRepository->findOneByEmail(self::EMAIL_ADMIN);
         $this->client->loginUser($testUser);
 
         $this->client->request('GET', '/users');
@@ -68,7 +68,7 @@ class UserControllerTest extends WebTestCase
     {
         $userRepository = static::getContainer()->get(UserRepository::class);
 
-        $testUser = $userRepository->findOneByEmail(SELF::EMAIL_USER);
+        $testUser = $userRepository->findOneByEmail(self::EMAIL_USER);
         $this->client->loginUser($testUser);
 
         $this->client->request('GET', '/users/create');
@@ -80,12 +80,11 @@ class UserControllerTest extends WebTestCase
         $this->assertSelectorExists('.alert.alert-danger', "VOUS AVEZ ETE REDIRIGE SUR CETTE PAGE CAR : N'étant pas administrateur de ce site vous n'avez pas accès à la ressource que vous avez demandez");
     }
 
-    // !ATTENTION! NE PAS OUBLIER DANS LA BBD DE SUPPRIMER CETTE LIGNE POUR POUVOIR REFAIRE UN TEST PLUS TARD CAR SINON LE TEST ECHOUERA (FAILED)
     public function testCreateUserWithRoleADMIN()
     {
         $userRepository = static::getContainer()->get(UserRepository::class);
 
-        $testUser = $userRepository->findOneByEmail(SELF::EMAIL_ADMIN);
+        $testUser = $userRepository->findOneByEmail(self::EMAIL_ADMIN);
         $this->client->loginUser($testUser);
 
         $this->client->followRedirects();
@@ -122,10 +121,10 @@ class UserControllerTest extends WebTestCase
     {
         $userRepository = static::getContainer()->get(UserRepository::class);
 
-        $testUser = $userRepository->findOneByEmail(SELF::EMAIL_USER);
+        $testUser = $userRepository->findOneByEmail(self::EMAIL_USER);
         $this->client->loginUser($testUser);
 
-        $userEdit = $userRepository->findOneBy(['email' => SELF::EMAIL]);
+        $userEdit = $userRepository->findOneBy(['email' => self::EMAIL]);
         $userEdit_id = $userEdit->getId();
 
         $this->client->request('GET', "/users/$userEdit_id/edit");
@@ -141,10 +140,10 @@ class UserControllerTest extends WebTestCase
     {
         $userRepository = static::getContainer()->get(UserRepository::class);
 
-        $testUser = $userRepository->findOneByEmail(SELF::EMAIL_ADMIN);
+        $testUser = $userRepository->findOneByEmail(self::EMAIL_ADMIN);
         $this->client->loginUser($testUser);
 
-        $userEdit = $userRepository->findOneBy(['email' => SELF::EMAIL]);
+        $userEdit = $userRepository->findOneBy(['email' => self::EMAIL]);
         $userEdit_id = $userEdit->getId();
 
 

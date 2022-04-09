@@ -47,7 +47,6 @@ class SecurityControllerTest extends WebTestCase
 
         // echo $this->client->getResponse()->getContent();
         // var_dump($this->client->getResponse()->getContent());
-
     }
 
     public function testAuthentificationWithInvalidCredential()

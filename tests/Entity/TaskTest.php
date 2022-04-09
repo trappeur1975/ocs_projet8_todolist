@@ -10,9 +10,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class TaskTest extends KernelTestCase
 {
-
-    const TASK_TITLE = "task title";
-    const TASK_CONTENT = "task content";
+    protected const TASK_TITLE = "task title";
+    protected const TASK_CONTENT = "task content";
 
     private $myTask;
 
