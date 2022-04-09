@@ -80,7 +80,7 @@ class UserTest extends KernelTestCase
 
     public function testValidRemoveTasks()
     {
-        $task1 = new Task;
+        $task1 = new Task();
         $this->myUser->addTask($task1);
         $this->assertCount(1, $this->myUser->getTasks());
         $this->myUser->removeTask($task1);

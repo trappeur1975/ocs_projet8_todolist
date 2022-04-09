@@ -32,8 +32,8 @@ class TaskTest extends KernelTestCase
         $this->assertCount(0, $error);
     }
 
-    public function testInvalidTitleBlank(): void  //ok
     // public function testInvalidTitleBlank(ValidatorInterface $validator): void
+    public function testInvalidTitleBlank(): void  //ok
     {
         $this->myTask->setTitle('');
 

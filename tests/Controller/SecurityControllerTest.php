@@ -88,7 +88,6 @@ class SecurityControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         // $this->assertResponseIsSuccessful()
         // $this->assertResponseRedirects("/", Response::HTTP_OK);
-
     }
 
     public function testLogoutWitButton()
