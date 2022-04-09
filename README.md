@@ -131,4 +131,5 @@ to run the tests I created, run the command:
 08/04/2022 : modification "codeSniffer en dev"  
 
 09/04/2022 : updated code with codacy recommendations  
-09/04/2022 : updated code after codeSniffer
+09/04/2022 : updated code after codeSniffer  
+09/04/2022 : updated code after codeSniffer  
