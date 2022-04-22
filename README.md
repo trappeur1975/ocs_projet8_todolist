@@ -19,7 +19,7 @@ https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
           * understand which file(s) need to be modified and why 
           * how authentication works and where users are stored 
      3. The application coverage test. To access it, here is the path "docs > coverageTests" and display the "index.html" page in your browser 
-     4. The code quality and performance audit report
+     4. The code quality and performance audit report  (file "audit_de_qualite_et_performance.pdf") 
          * detail the quality process to be used as well as the rules to be respected.
 
 # Minimum server configuration
@@ -66,69 +66,3 @@ to run the tests I created, run the command:
 [documentation symfony](https://symfony.com/doc/5.4/setup.html)
 
 [documentation php](https://phpunit.readthedocs.io/en/latest/installation.html#requirements)
-
----
-
-16/01/2022 : creation of the github repository and update of the original symfony project in 3.1 to symfony 3.4 (correction of deprecations)  
-27/01/2022 : migration from symfony 3.4 to symfony 5.4.2 and correction of depreciation
-
-29/01/2022 : corrections of anomalies => management of roles for users  
-29/01/2022 : corrections of anomalies => task management (attach an author to a task and display it in the task list in front) (task management without author displayed anonymously)  
-29/01/2022 : bug fix in my code for saving roles in the "UserController.php" file
-
-30/01/2022 : resolution of the personal display bug to display the task icon closed or not completed  
-30/01/2022 : update of TaskType.php and edit.html.twig file  
-30/01/2022 : personal code modification => mapping of the "roles" field in "userType.php"  
-30/01/2022 : modification of personal code => "userType.php" file so that when editing a user, the role select is positioned on the role to which it belongs  
-
-06/02/2022 : addition of {{ path('homepage') }} in "base.html.twig"  
-06/02/2022 : added @IsGranted("ROLE_ADMIN") rule for the listAction function
-
-07/02/2022 : addition of @IsGranted("DELETE_TASK") rule in controller taskcontroller function "deleteTaskAction" and creation of "TaskVoter" in security > voter
-
-08/02/2022 : modify "taskVoter.php" function "voteOnAttribute" for an admin to delete tasks of which anonymous is the author
-
-19/02/2022 : TASKTEST unit test
-
-20/02/2022 : unit test for entities (task, user) and composer upgrade  
-20/02/2022 : creation of the CoverageTest folder to test the code coverage rate
-
-25/02/2022 : refactoring of unit test code (taskTest and UserTest) and functional test defaultControllerTest.php
-
-26/02/2022 : functional test SecurityControllerTest.php
-
-03/03/2022 : functional test UserControllerTest.php
-
-04/03/2022 : functional test TaskControllerTest.php
-
-10/03/2022 : correction of the depreciations appeared during the tests
-
-11/03/2022 : create fixtures (UserFixtures, Taskfixtures)
-
-13/03/2022 : modification of tests following fixtures
-
-14/03/2022 : installation and configuration of doctrine-test-bundle to rollback transactions in my tests  
-14/03/2022 : modifying userFixtures.php to use UserPasswordHasherInterface
-
-22/03/2022 : delete branche dev_documentation
-
-23/03/2022 : create branche dev_document
-
-24/03/2022 : markdown readme document  
-24/03/2022 : update readme.md  
-24/03/2022 : create contribution.md  
-24/03/2022 : update contribution.md  
-24/03/2022 : update 2 contribution.md  
-24/03/2022 : update 3 contribution.md
-
-25/03/2022 : update of project documentation
-
-26/03/2022 : update documentation, security.yaml, securityController  
-26/03/2022 : integration "document_technique_todoList"
-
-08/04/2022 : integration "blackfire"  
-08/04/2022 : integration "codeSniffer en dev"  
-08/04/2022 : modification "codeSniffer en dev"  
-
-09/04/2022 : updated code with codacy recommendations  
-09/04/2022 : updated code after codeSniffer
