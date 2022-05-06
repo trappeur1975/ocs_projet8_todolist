@@ -1,0 +1,12 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Page 500</h1>
+
+    <p>Le code est : {{status_code}}</p>
+
+    <p>
+       Il y a eu une erreur, retourner à la page d'accueille <a href="{{ path('homepage') }}"></a>.
+    </p>
+{% endblock %}
